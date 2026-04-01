@@ -112,7 +112,7 @@ func (s ParcelStore) SetAddress(number int, address string) error {
 	}
 
 	if rowsAffected == 0 {
-		return fmt.Errorf("parcel with number %d not found", number)
+		return fmt.Errorf("cannot update address: parcel %d not found or has status other than '%s'", number, ParcelStatusRegistered)
 	}
 
 	return nil
@@ -131,7 +131,7 @@ func (s ParcelStore) Delete(number int) error {
 	}
 
 	if rowsAffected == 0 {
-		return fmt.Errorf("parcel with number %d not found", number)
+		return fmt.Errorf("cannot delete: parcel %d not found or has status other than '%s'", number, ParcelStatusRegistered)
 	}
 
 	return nil
